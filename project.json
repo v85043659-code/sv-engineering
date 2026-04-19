@@ -1,0 +1,24 @@
+{
+  "overview": "Professional business website for SV Engineering, a supplier and sourcing partner for pneumatic and automation components established in 2021. Features a product catalog, lead generation inquiry forms, and a clean industrial design.",
+  "features": [
+    "Homepage with hero, featured products, and Why Choose Us section",
+    "Products page with 7 categories and filterable product grid",
+    "Product detail pages with specifications and quote request button",
+    "About Us, Services, and Contact pages",
+    "Inquiry form for lead generation (Name, Phone, Requirement)",
+    "WhatsApp click-to-chat integration",
+    "Mobile-responsive industrial design in blue, white, and grey",
+    "Industries We Serve section (manufacturing, automation, machinery)"
+  ],
+  "category": "business",
+  "tags": [
+    "business",
+    "industrial",
+    "pneumatics",
+    "product-catalog",
+    "lead-generation",
+    "b2b",
+    "manufacturing"
+  ],
+  "last_updated": "2026-04-19T06:10:07.401Z"
+}

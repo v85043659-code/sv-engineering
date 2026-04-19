@@ -1,0 +1,24 @@
+type Timestamp = int;
+type SubmitResult = 
+ variant {
+   err: text;
+   ok: nat;
+ };
+type InquiryRequest = 
+ record {
+   name: text;
+   phone: text;
+   requirement: text;
+ };
+type Inquiry = 
+ record {
+   createdAt: Timestamp;
+   id: nat;
+   name: text;
+   phone: text;
+   requirement: text;
+ };
+service : {
+  getInquiries: () -> (vec Inquiry) query;
+  submitInquiry: (req: InquiryRequest) -> (SubmitResult);
+}

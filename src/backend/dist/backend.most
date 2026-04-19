@@ -1,0 +1,22 @@
+// Version: 1.0.0
+type Inquiry__954613087 =
+  {
+    createdAt : Timestamp__685979919;
+    id : Nat;
+    name : Text;
+    phone : Text;
+    requirement : Text
+  };
+type Nat__490723111 = Nat__920180692;
+type Nat__920180692 = Nat;
+type Timestamp__301639476 = Int;
+type Timestamp__685979919 = Timestamp__301639476;
+actor {
+  stable inquiries :
+    {
+      var blockIndex : Nat__490723111;
+      var blocks : [var [var ?Inquiry__954613087]];
+      var elementIndex : Nat__490723111
+    };
+  stable nextInquiryId : {var value : Nat}
+};

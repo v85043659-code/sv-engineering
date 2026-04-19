@@ -1,0 +1,249 @@
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { Link } from "@tanstack/react-router";
+import { ArrowRight, Calendar, Package, Users } from "lucide-react";
+import { motion } from "motion/react";
+
+const milestones = [
+  {
+    year: "2021",
+    title: "Founded",
+    description:
+      "SV Engineering was established in Maharashtra with a focus on pneumatic component supply.",
+  },
+  {
+    year: "2022",
+    title: "Brand Partnerships",
+    description:
+      "Established supply partnerships with leading manufacturers including Legris fittings.",
+  },
+  {
+    year: "2023",
+    title: "Expanded Range",
+    description:
+      "Broadened product catalog to cover full FRL, directional valves, and pressure gauges.",
+  },
+  {
+    year: "2024+",
+    title: "Growing Network",
+    description:
+      "Serving industrial clients across Maharashtra and beyond with reliable delivery.",
+  },
+];
+
+const values = [
+  {
+    icon: Package,
+    title: "Genuine Products",
+    description:
+      "We supply only authentic components from trusted and established manufacturers — no counterfeits, no compromises.",
+  },
+  {
+    icon: Users,
+    title: "Customer First",
+    description:
+      "Every inquiry is handled personally. We understand your requirement and source the exact component you need.",
+  },
+  {
+    icon: Calendar,
+    title: "Reliability",
+    description:
+      "Consistent availability, honest communication, and on-time delivery have defined our operations since day one.",
+  },
+];
+
+export default function AboutPage() {
+  return (
+    <div data-ocid="about.page">
+      {/* Hero */}
+      <div className="bg-card border-b border-border">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
+          <Badge
+            variant="secondary"
+            className="mb-4 text-xs font-body uppercase tracking-wider"
+          >
+            About Us
+          </Badge>
+          <h1 className="font-display font-bold text-4xl lg:text-5xl text-foreground mb-4 max-w-2xl">
+            Your Trusted Pneumatic Components Partner
+          </h1>
+          <p className="font-body text-muted-foreground text-lg leading-relaxed max-w-2xl">
+            Founded in 2021, SV Engineering is a supplier and sourcing partner
+            for pneumatic and automation components across India. We work
+            directly with manufacturers and distributors to ensure genuine
+            products at competitive prices.
+          </p>
+        </div>
+      </div>
+
+      {/* Story */}
+      <section className="bg-background py-14" data-ocid="about.story_section">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4 }}
+            >
+              <h2 className="font-display font-bold text-3xl text-foreground mb-4">
+                Who We Are
+              </h2>
+              <div className="space-y-4 font-body text-muted-foreground leading-relaxed">
+                <p>
+                  SV Engineering was started in 2021 with a simple mission: make
+                  it easier for Indian industrial businesses to source quality
+                  pneumatic components without the hassle of navigating complex
+                  supply chains.
+                </p>
+                <p>
+                  We specialize in pneumatic cylinders, solenoid valves, FRL
+                  units, fittings (including genuine Legris products), and all
+                  associated automation components. Our sourcing network spans
+                  established Indian distributors and authorized import
+                  partners.
+                </p>
+                <p>
+                  Whether you need a single replacement component or are setting
+                  up a full pneumatic circuit, we can help you identify the
+                  right parts, confirm specifications, and deliver quickly.
+                </p>
+              </div>
+              <Link
+                to="/contact"
+                className="mt-6 inline-block"
+                data-ocid="about.cta_button"
+              >
+                <Button className="font-display font-semibold">
+                  Get in Touch
+                  <ArrowRight className="ml-2 w-4 h-4" />
+                </Button>
+              </Link>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: 0.1 }}
+              className="grid grid-cols-2 gap-4"
+            >
+              {[
+                { value: "2021", label: "Year Founded" },
+                { value: "7+", label: "Product Categories" },
+                { value: "25+", label: "Products Available" },
+                { value: "100%", label: "Genuine Products" },
+              ].map((stat, i) => (
+                <div
+                  key={stat.label}
+                  className="bg-card border border-border rounded-xl p-6 text-center"
+                  data-ocid={`about.stat.${i + 1}`}
+                >
+                  <p className="font-display font-bold text-3xl text-primary">
+                    {stat.value}
+                  </p>
+                  <p className="font-body text-muted-foreground text-sm mt-1">
+                    {stat.label}
+                  </p>
+                </div>
+              ))}
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Values */}
+      <section
+        className="bg-muted/30 border-y border-border py-14"
+        data-ocid="about.values_section"
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-10">
+            <h2 className="font-display font-bold text-3xl text-foreground mb-2">
+              What We Stand For
+            </h2>
+            <p className="font-body text-muted-foreground max-w-xl mx-auto">
+              Three principles guide every interaction with our clients.
+            </p>
+          </div>
+          <div className="grid sm:grid-cols-3 gap-6">
+            {values.map((val, i) => (
+              <motion.div
+                key={val.title}
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.35, delay: i * 0.1 }}
+                data-ocid={`about.value_card.${i + 1}`}
+              >
+                <Card className="h-full">
+                  <CardContent className="p-6">
+                    <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
+                      <val.icon className="w-5 h-5 text-primary" />
+                    </div>
+                    <h3 className="font-display font-semibold text-foreground mb-2">
+                      {val.title}
+                    </h3>
+                    <p className="font-body text-muted-foreground text-sm leading-relaxed">
+                      {val.description}
+                    </p>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Timeline */}
+      <section
+        className="bg-background py-14"
+        data-ocid="about.timeline_section"
+      >
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-10">
+            <h2 className="font-display font-bold text-3xl text-foreground mb-2">
+              Our Journey
+            </h2>
+            <p className="font-body text-muted-foreground">
+              Building trust with industrial clients since 2021.
+            </p>
+          </div>
+          <div className="space-y-6">
+            {milestones.map((milestone, i) => (
+              <motion.div
+                key={milestone.year}
+                initial={{ opacity: 0, x: -16 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.35, delay: i * 0.08 }}
+                className="flex gap-5"
+                data-ocid={`about.milestone.${i + 1}`}
+              >
+                <div className="flex flex-col items-center">
+                  <div className="w-10 h-10 bg-primary rounded-full flex items-center justify-center shrink-0">
+                    <span className="text-primary-foreground font-display font-bold text-xs">
+                      {milestone.year.replace("+", "")}
+                    </span>
+                  </div>
+                  {i < milestones.length - 1 && (
+                    <div className="w-0.5 flex-1 bg-border mt-2" />
+                  )}
+                </div>
+                <div className="pb-6">
+                  <p className="font-display font-semibold text-foreground">
+                    {milestone.title}
+                  </p>
+                  <p className="font-body text-muted-foreground text-sm mt-1 leading-relaxed">
+                    {milestone.description}
+                  </p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}

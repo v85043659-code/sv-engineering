@@ -1,0 +1,373 @@
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { featuredProducts } from "@/data/products";
+import { Link, useNavigate } from "@tanstack/react-router";
+import {
+  ArrowRight,
+  BadgeDollarSign,
+  Calendar,
+  ChevronRight,
+  MessageCircle,
+  Phone,
+  ShieldCheck,
+  Truck,
+} from "lucide-react";
+import { motion } from "motion/react";
+
+const trustBadges = [
+  {
+    icon: ShieldCheck,
+    title: "Quality Products",
+    description: "Genuine components from trusted brands including Legris",
+  },
+  {
+    icon: Truck,
+    title: "Fast Delivery",
+    description: "Reliable dispatch for orders across India",
+  },
+  {
+    icon: BadgeDollarSign,
+    title: "Competitive Pricing",
+    description: "Best-in-market rates for bulk and regular orders",
+  },
+  {
+    icon: Calendar,
+    title: "Trusted Since 2021",
+    description: "3+ years of consistent supply to industrial clients",
+  },
+];
+
+const industries = [
+  { name: "Manufacturing", icon: "🏭" },
+  { name: "Automation", icon: "🤖" },
+  { name: "Food & Beverage", icon: "🏗️" },
+  { name: "Packaging", icon: "📦" },
+  { name: "Automotive", icon: "🚗" },
+  { name: "Textile Machinery", icon: "⚙️" },
+];
+
+const WHATSAPP_NUMBER = "917506484351";
+
+export default function HomePage() {
+  return (
+    <div data-ocid="home.page">
+      {/* Hero */}
+      <section
+        className="relative bg-card border-b border-border overflow-hidden"
+        data-ocid="home.hero_section"
+      >
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-background to-secondary/10 pointer-events-none" />
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-20">
+          <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -24 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5 }}
+            >
+              <Badge
+                variant="secondary"
+                className="mb-4 font-body text-xs uppercase tracking-wider"
+              >
+                Established 2021 · Maharashtra, India
+              </Badge>
+              <h1 className="font-display font-bold text-4xl lg:text-5xl xl:text-6xl leading-tight text-foreground mb-4">
+                SV Engineering
+              </h1>
+              <p className="font-display text-xl lg:text-2xl text-primary font-medium mb-4 leading-snug">
+                Supplier of Pneumatic &amp; Automation Components
+              </p>
+              <p className="font-body text-muted-foreground text-base lg:text-lg leading-relaxed mb-8 max-w-lg">
+                Founded in 2021, SV Engineering provides reliable pneumatic
+                products for industrial use — from cylinders and solenoid valves
+                to genuine Legris fittings and FRL units.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-3">
+                <Link to="/contact" data-ocid="home.hero_quote_button">
+                  <Button
+                    size="lg"
+                    className="font-display font-semibold tracking-wide w-full sm:w-auto"
+                  >
+                    Request a Quote
+                    <ArrowRight className="ml-2 w-4 h-4" />
+                  </Button>
+                </Link>
+                <a
+                  href={`https://wa.me/${WHATSAPP_NUMBER}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  data-ocid="home.hero_whatsapp_button"
+                >
+                  <Button
+                    size="lg"
+                    variant="outline"
+                    className="font-display font-semibold tracking-wide w-full sm:w-auto"
+                  >
+                    <MessageCircle className="mr-2 w-4 h-4 text-whatsapp" />
+                    WhatsApp Us
+                  </Button>
+                </a>
+              </div>
+              <div className="mt-6 flex items-center gap-3">
+                <a
+                  href="tel:7506484351"
+                  className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors duration-200 font-body text-sm"
+                  data-ocid="home.hero_phone_link"
+                >
+                  <Phone className="w-4 h-4" />
+                  <span>7506484351</span>
+                </a>
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, scale: 0.97 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              className="relative rounded-xl overflow-hidden shadow-xl border border-border"
+            >
+              <img
+                src="/assets/generated/hero-pneumatic-components.dim_1200x600.jpg"
+                alt="SV Engineering — Pneumatic and Automation Components"
+                className="w-full h-72 lg:h-96 object-cover"
+              />
+              <div className="absolute bottom-4 left-4 right-4 bg-card/95 backdrop-blur-sm rounded-lg px-4 py-3 border border-border shadow">
+                <p className="font-display font-semibold text-foreground text-sm">
+                  Genuine Products · Trusted Brands
+                </p>
+                <p className="font-body text-muted-foreground text-xs mt-0.5">
+                  Including Legris fittings and other leading manufacturers
+                </p>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Trust Badges */}
+      <section
+        className="bg-muted/40 border-b border-border py-8"
+        data-ocid="home.trust_section"
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+            {trustBadges.map((badge, i) => (
+              <motion.div
+                key={badge.title}
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.35, delay: i * 0.08 }}
+                className="flex items-start gap-3 p-4 bg-card rounded-lg border border-border"
+                data-ocid={`home.trust_badge.${i + 1}`}
+              >
+                <div className="w-8 h-8 bg-primary/10 rounded-md flex items-center justify-center shrink-0">
+                  <badge.icon className="w-4 h-4 text-primary" />
+                </div>
+                <div className="min-w-0">
+                  <p className="font-display font-semibold text-foreground text-sm">
+                    {badge.title}
+                  </p>
+                  <p className="font-body text-muted-foreground text-xs mt-0.5 leading-relaxed line-clamp-2">
+                    {badge.description}
+                  </p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Featured Products */}
+      <section
+        className="bg-background py-14 lg:py-20"
+        data-ocid="home.products_section"
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8">
+            <div>
+              <p className="text-primary font-body text-sm font-semibold uppercase tracking-wider mb-1">
+                Most Sold Products
+              </p>
+              <h2 className="font-display font-bold text-3xl lg:text-4xl text-foreground">
+                Our Core Range
+              </h2>
+              <p className="text-muted-foreground font-body mt-2 max-w-lg">
+                High-demand pneumatic and automation components sourced from
+                reliable manufacturers.
+              </p>
+            </div>
+            <Link to="/products" data-ocid="home.view_all_products_link">
+              <Button
+                variant="outline"
+                className="font-display font-medium shrink-0"
+              >
+                View All Products
+                <ChevronRight className="ml-1 w-4 h-4" />
+              </Button>
+            </Link>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {featuredProducts.map((product, i) => (
+              <motion.div
+                key={product.id}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: i * 0.08 }}
+                data-ocid={`home.product_card.${i + 1}`}
+              >
+                <Card className="group hover:shadow-md transition-shadow duration-200 overflow-hidden h-full flex flex-col">
+                  <div className="relative overflow-hidden bg-muted/30 h-44">
+                    <img
+                      src={product.image}
+                      alt={product.name}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+                    <div className="absolute top-2 left-2">
+                      <Badge
+                        variant="secondary"
+                        className="text-[10px] font-body"
+                      >
+                        {product.category}
+                      </Badge>
+                    </div>
+                  </div>
+                  <CardContent className="p-4 flex flex-col flex-1">
+                    <h3 className="font-display font-semibold text-foreground text-sm leading-tight mb-1 line-clamp-2">
+                      {product.name}
+                    </h3>
+                    <p className="text-muted-foreground text-xs font-body leading-relaxed line-clamp-2 mb-3 flex-1">
+                      {product.description}
+                    </p>
+                    <div className="flex gap-2">
+                      <Link
+                        to="/products/$productId"
+                        params={{ productId: product.id }}
+                        className="flex-1"
+                        data-ocid={`home.product_detail_link.${i + 1}`}
+                      >
+                        <Button
+                          variant="outline"
+                          size="sm"
+                          className="w-full font-body text-xs"
+                        >
+                          View Details
+                        </Button>
+                      </Link>
+                      <Link
+                        to="/contact"
+                        className="flex-1"
+                        data-ocid={`home.product_quote_button.${i + 1}`}
+                      >
+                        <Button size="sm" className="w-full font-body text-xs">
+                          Request Quote
+                        </Button>
+                      </Link>
+                    </div>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Industries */}
+      <section
+        className="bg-muted/30 border-y border-border py-14"
+        data-ocid="home.industries_section"
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-8">
+            <p className="text-primary font-body text-sm font-semibold uppercase tracking-wider mb-1">
+              Industries We Serve
+            </p>
+            <h2 className="font-display font-bold text-3xl text-foreground">
+              Built for Industrial Applications
+            </h2>
+            <p className="text-muted-foreground font-body mt-2 max-w-xl mx-auto">
+              Our pneumatic components power operations across diverse sectors,
+              from manufacturing floors to automated assembly lines.
+            </p>
+          </div>
+          <div className="grid grid-cols-3 sm:grid-cols-6 gap-4">
+            {industries.map((ind, i) => (
+              <motion.div
+                key={ind.name}
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.3, delay: i * 0.05 }}
+                className="flex flex-col items-center gap-2 p-4 bg-card rounded-lg border border-border hover:border-primary/30 hover:shadow-sm transition-all duration-200"
+                data-ocid={`home.industry_card.${i + 1}`}
+              >
+                <span className="text-2xl">{ind.icon}</span>
+                <p className="font-body text-xs font-medium text-foreground text-center leading-tight">
+                  {ind.name}
+                </p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="bg-primary py-14" data-ocid="home.cta_section">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4 }}
+          >
+            <h2 className="font-display font-bold text-3xl lg:text-4xl text-primary-foreground mb-3">
+              Ready to Source Your Components?
+            </h2>
+            <p className="font-body text-primary-foreground/80 text-lg mb-8 max-w-xl mx-auto">
+              Get in touch for competitive pricing, bulk order support, and fast
+              delivery across India.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-3 justify-center">
+              <Link to="/contact" data-ocid="home.cta_quote_button">
+                <Button
+                  size="lg"
+                  variant="secondary"
+                  className="font-display font-semibold tracking-wide w-full sm:w-auto"
+                >
+                  Request a Quote
+                  <ArrowRight className="ml-2 w-4 h-4" />
+                </Button>
+              </Link>
+              <a
+                href={`https://wa.me/${WHATSAPP_NUMBER}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                data-ocid="home.cta_whatsapp_button"
+              >
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="font-display font-semibold tracking-wide w-full sm:w-auto border-primary-foreground/40 text-primary-foreground hover:bg-primary-foreground/10"
+                >
+                  <MessageCircle className="mr-2 w-4 h-4" />
+                  Chat on WhatsApp
+                </Button>
+              </a>
+            </div>
+            <p className="font-body text-primary-foreground/70 text-sm mt-5">
+              Call us directly:{" "}
+              <a
+                href="tel:7506484351"
+                className="underline underline-offset-2 hover:text-primary-foreground transition-colors"
+              >
+                7506484351
+              </a>
+            </p>
+          </motion.div>
+        </div>
+      </section>
+    </div>
+  );
+}

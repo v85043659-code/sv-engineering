@@ -1,0 +1,202 @@
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { Link } from "@tanstack/react-router";
+import {
+  ArrowRight,
+  CheckCircle,
+  Layers,
+  Package,
+  Search,
+  Settings,
+} from "lucide-react";
+import { motion } from "motion/react";
+
+const services = [
+  {
+    icon: Package,
+    title: "Pneumatic Product Supply",
+    description:
+      "Direct supply of a wide range of pneumatic components including cylinders, valves, fittings, tubing, and FRL units from trusted manufacturers.",
+    points: [
+      "Cylinders (single & double acting)",
+      "Solenoid and directional control valves",
+      "Legris and compatible push-in fittings",
+      "FRL air preparation units",
+      "Pressure gauges and accessories",
+    ],
+  },
+  {
+    icon: Search,
+    title: "Industrial Component Sourcing",
+    description:
+      "Can't find the exact part you need? We identify and source specific pneumatic components from our network of manufacturers and distributors.",
+    points: [
+      "Part identification by specification or part number",
+      "Cross-referencing between brands",
+      "Sourcing discontinued or hard-to-find parts",
+      "Import assistance for specialized items",
+      "Technical specification matching",
+    ],
+  },
+  {
+    icon: Layers,
+    title: "Bulk Order Support",
+    description:
+      "Flexible bulk procurement for manufacturing plants, OEMs, and industrial maintenance teams needing consistent supply.",
+    points: [
+      "Volume pricing for large orders",
+      "Scheduled recurring supply",
+      "Multiple SKUs in a single order",
+      "Consolidated delivery to site",
+      "Inventory planning assistance",
+    ],
+  },
+  {
+    icon: Settings,
+    title: "Custom Requirement Fulfillment",
+    description:
+      "Special requirements like non-standard sizes, specific pressure ratings, or custom mounting configurations handled on request.",
+    points: [
+      "Custom stroke lengths and bore sizes",
+      "Specific seal materials (NBR, Viton, PTFE)",
+      "Custom port configurations",
+      "Application-specific recommendations",
+      "Documentation and certification support",
+    ],
+  },
+];
+
+const industries = [
+  "Manufacturing & Assembly",
+  "Packaging Machinery",
+  "Food & Beverage Processing",
+  "Automotive Components",
+  "Textile Machinery",
+  "Material Handling",
+  "Agricultural Equipment",
+  "Printing & Paper",
+];
+
+export default function ServicesPage() {
+  return (
+    <div data-ocid="services.page">
+      {/* Header */}
+      <div className="bg-card border-b border-border">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
+          <Badge
+            variant="secondary"
+            className="mb-4 text-xs font-body uppercase tracking-wider"
+          >
+            Our Services
+          </Badge>
+          <h1 className="font-display font-bold text-4xl lg:text-5xl text-foreground mb-4 max-w-2xl">
+            How We Help Your Operations
+          </h1>
+          <p className="font-body text-muted-foreground text-lg leading-relaxed max-w-2xl">
+            From standard product supply to custom sourcing, SV Engineering
+            supports every stage of your pneumatic component procurement.
+          </p>
+        </div>
+      </div>
+
+      {/* Services */}
+      <section
+        className="bg-background py-14"
+        data-ocid="services.services_section"
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid sm:grid-cols-2 gap-6">
+            {services.map((service, i) => (
+              <motion.div
+                key={service.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: i * 0.1 }}
+                data-ocid={`services.service_card.${i + 1}`}
+              >
+                <Card className="h-full hover:shadow-md transition-shadow duration-200">
+                  <CardContent className="p-6">
+                    <div className="w-11 h-11 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
+                      <service.icon className="w-5 h-5 text-primary" />
+                    </div>
+                    <h2 className="font-display font-bold text-lg text-foreground mb-2">
+                      {service.title}
+                    </h2>
+                    <p className="font-body text-muted-foreground text-sm leading-relaxed mb-4">
+                      {service.description}
+                    </p>
+                    <ul className="space-y-1.5">
+                      {service.points.map((point) => (
+                        <li
+                          key={point}
+                          className="flex items-start gap-2 text-sm font-body text-muted-foreground"
+                        >
+                          <CheckCircle className="w-4 h-4 text-primary shrink-0 mt-0.5" />
+                          <span>{point}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Industries */}
+      <section
+        className="bg-muted/30 border-y border-border py-14"
+        data-ocid="services.industries_section"
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-8">
+            <h2 className="font-display font-bold text-3xl text-foreground mb-2">
+              Industries We Serve
+            </h2>
+            <p className="font-body text-muted-foreground max-w-xl mx-auto">
+              Pneumatic components from SV Engineering are used across diverse
+              industrial applications.
+            </p>
+          </div>
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+            {industries.map((industry, i) => (
+              <motion.div
+                key={industry}
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.3, delay: i * 0.05 }}
+                className="bg-card border border-border rounded-lg px-4 py-3 text-center font-body text-sm font-medium text-foreground hover:border-primary/30 hover:shadow-sm transition-all duration-200"
+                data-ocid={`services.industry_item.${i + 1}`}
+              >
+                {industry}
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="bg-background py-14" data-ocid="services.cta_section">
+        <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="font-display font-bold text-3xl text-foreground mb-3">
+            Have a Specific Requirement?
+          </h2>
+          <p className="font-body text-muted-foreground mb-8 leading-relaxed">
+            Describe your pneumatic component needs and our team will get back
+            to you with availability, specifications, and pricing.
+          </p>
+          <Link to="/contact" data-ocid="services.cta_button">
+            <Button size="lg" className="font-display font-semibold">
+              Send Your Requirement
+              <ArrowRight className="ml-2 w-4 h-4" />
+            </Button>
+          </Link>
+        </div>
+      </section>
+    </div>
+  );
+}
